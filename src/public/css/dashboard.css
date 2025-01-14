@@ -1,0 +1,623 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-image: url('https://r4.wallpaperflare.com/wallpaper/266/631/608/darktea-wang-sky-night-starry-night-anime-hd-wallpaper-800aa938c19afb99696618e34c56ec0c.jpg');
+    background-size: cover;  /*Mengatur gambar agar menutupi seluruh halaman */
+    background-position: center;
+    background-repeat: no-repeat; /* Mencegah gambar diulang */
+    color: #ffffff;
+    margin: 0; 
+    padding: 0; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+}
+
+@media (max-width: 768px) {
+            body {
+                background-image: url('https://r4.wallpaperflare.com/wallpaper/266/631/608/darktea-wang-sky-night-starry-night-anime-hd-wallpaper-800aa938c19afb99696618e34c56ec0c.jpg');
+            }
+        }
+
+    header {
+    display: flex;
+    justify-content: space-between; /* Space between logo and icons */
+    align-items: center; /* Center items vertically */
+    padding: 10px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #1a1a1a, #2a2a2a, cyan, blue, magenta, #1a1a1a, #2a2a2a, cyan, magenta, blue);
+    background-size: 400% 400%;
+    animation: gradient 15s linear infinite;
+    color: #ffffff;
+    width: 100%;
+    z-index: 1000;
+}
+
+.header-icons {
+    display: flex; /* Use flexbox to align icons */
+    align-items: center; /* Center icons vertically */
+}
+
+.notification-icon {
+    margin-right: 0; /* Space between notification icon and hamburger menu */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    animation: ring 2s infinite; 
+    font-size: 1.3em;
+}
+    
+    .logo, .nav-logo {
+    text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 30px #00ccff;
+}
+
+    /* CSS untuk judul "Shannz APIs" */
+    .logo {
+  padding: 10px;
+  color: #fff;
+  margin-top: 7px;
+  margin-left: 15px;
+  position: relative;
+  overflow: hidden;
+  background-size: 400% 400%;
+}
+
+    /* CSS untuk tombol hamburger menu */
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        padding: 10px;
+        margin-left: 0;
+        color: #fff; /* Warna putih */
+        }
+
+    .line {
+        width: 30px;
+        height: 3px;
+        background-color: #fff; /* Warna putih */
+        margin: 5px 0;
+        transition: all 0.3s;
+    }
+
+    .menu-toggle.active .line:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .menu-toggle.active .line:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active .line:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* CSS untuk efek slide menu */
+    nav {
+        position: fixed;
+        top: 0; /* Geser menu ke atas header */
+        left: -250px; /* Menu awalnya tersembunyi di luar layar sebelah kiri */
+        width: 220px; /* Lebar menu dikurangi */
+        height: 100vh;
+        background-color: #1a1a1a; /* Warna latar belakang hitam */
+        color: #fff; /* Warna teks putih */
+        transition: left 0.3s; /* Efek transisi saat menu digeser */
+        z-index: 1000; /* Menempatkan menu di atas header */
+    }
+
+    nav ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    nav ul li {
+        padding: 8px; /* Padding dikurangi */
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #333; /* Pembatas di antara item menu */
+    }
+
+    nav a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: color 0.3s, background-color 0.3s; /* Efek transisi warna dan latar belakang selama 0.3 detik */
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 8px; /* Padding dikurangi */
+        background-color: #2a2a2a; /* Latar belakang blok */
+        border-radius: 5px; /* Sudut melengkung */
+    }
+
+    nav a:hover {
+        color: #00ccff;
+        background-color: #333333; /* Latar belakang saat hover */
+        transform: scale(1.05); /* Efek memperbesar sedikit saat hover */
+    }
+
+    nav.slide {
+        left: 0;
+    }
+
+    .menu-icon {
+        margin-right: 10px;
+    }
+
+    /* CSS untuk mempercantik logo di dalam menu */
+    .nav-logo {
+        padding: 15px;
+        background-size: 400% 400%;
+        animation: gradient 15s linear infinite;
+        border-radius: 5px; /* Sudut melengkung */
+        margin: 10px; /* Margin untuk memberi jarak dari elemen sekitarnya */
+        text-align: center; /* Pusatkan teks */
+        font-size: 1.2em; /* Ukuran font lebih besar */
+        font-weight: bold; /* Teks tebal */
+        position: relative; /* Untuk membuat elemen pseudo bekerja */
+        overflow: hidden; /* Untuk menyembunyikan bagian animasi yang keluar dari kotak */
+        color: #fff; /* Warna teks putih */
+    }
+
+    /* Efek animasi warna-warni di tepi kotak menu */
+    .nav-logo::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 5px; /* Sudut melengkung */
+        border: 2px solid transparent; /* Border transparan, mengatur ketebalan warna */
+        background: linear-gradient(70deg, red, yellow, green, cyan, blue, magenta, red);
+        background-size: 400% 400%;
+        animation: gradient 1000s linear infinite;
+        z-index: -1; /* Menempatkan animasi di belakang teks */
+    }
+
+    .nav-logo::after {
+        content: '';
+        position: absolute;
+        top: 2px; /* Mengatur jarak dari tepi */
+        left: 2px; /* Mengatur jarak dari tepi */
+        right: 2px; /* Mengatur jarak dari tepi */
+        bottom: 2px; /* Mengatur jarak dari tepi */
+        background-color: #2e2e2e; /* Warna latar belakang blok */
+        border-radius: 5px; /* Sudut melengkung */
+        z-index: -1; /* Menempatkan latar belakang di belakang teks */
+    }
+    
+    .out {
+        padding: 13px;
+    }
+
+footer {
+        background: linear-gradient(45deg, #1a1a1a, #2a2a2a, cyan, blue, magenta, #1a1a1a, #2a2a2a, cyan, magenta, blue);
+        background-size: 400% 400%;
+        animation: gradient 15s linear infinite;
+        color: #fff; /* Warna teks putih */
+        padding: 9px; /* Ukuran padding lebih kecil */
+        text-align: center;
+        margin-top: auto; /* Membuat footer berada di bawah */
+        font-size: 0.8em; /* Ukuran teks lebih kecil */
+    }
+
+    @keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+} 
+
+.page-loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.fire-loading {
+  text-align: center;
+}
+
+.fire-logo {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 20px;
+}
+
+.fire {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flames {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  width: 60%;
+  height: 60%;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.flame {
+  position: absolute;
+  right: 0%;
+  bottom: 0%;
+  width: 0%;
+  height: 0%;
+  background-color: #ffdc01;
+  border-radius: 1vw;
+}
+
+.flame:nth-child(2n + 1) {
+  animation: flameodd 1.5s ease-in infinite;
+}
+
+.flame:nth-child(2n) {
+  animation: flameeven 1.5s ease-in infinite;
+}
+
+.flame:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.flame:nth-child(2) {
+  animation-delay: 0.375s;
+}
+
+.flame:nth-child(3) {
+  animation-delay: 0.75s;
+}
+
+.flame:nth-child(4) {
+  animation-delay: 1.125s;
+}
+
+.logs {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 15%;
+  background-color: #70392f;
+  border-radius: 10px;
+}
+
+.logs:before, .logs:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 100%;
+  height: 100%;
+  background-color: #70392f;
+  border-radius: 10px;
+}
+
+.logs:before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.fire-loading h4 {
+  color: #fff;
+  font-family: 'Georgia', serif;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+@keyframes flameodd {
+  0%, 100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #ffdc01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #fdac01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #f73b01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 1%;
+    bottom: 2%;
+  }
+  100% {
+    right: 150%;
+    bottom: 170%;
+  }
+}
+
+@keyframes flameeven {
+  0%, 100% {
+    width: 0%;
+    height: 0%;
+  }
+  25% {
+    width: 100%;
+    height: 100%;
+  }
+  0% {
+    background-color: #ffdc01;
+    z-index: 1000000;
+  }
+  40% {
+    background-color: #fdac01;
+    z-index: 1000000;
+  }
+  100% {
+    background-color: #f73b01;
+    z-index: -10;
+  }
+  0% {
+    right: 0%;
+    bottom: 0%;
+  }
+  25% {
+    right: 2%;
+    bottom: 1%;
+  }
+  100% {
+    right: 170%;
+    bottom: 150%;
+  }
+}
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid magenta;
+            background-color: #2a2a2a;
+            box-shadow: 0 0 10px rgba(250, 195, 235, 1.0);
+        }
+        .stat-title {
+            font-weight: bold;
+            color: #00ccff;
+            margin-bottom: 5px;
+        }
+        .stat-value {
+            color: #ffffff;
+            font-size: 1.2em;
+        }
+        .memory-bar {
+            background-color: #333333;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        .memory-used {
+            background-color: #00ccff;
+            height: 100%;
+            width: 0;
+            transition: width 0.5s ease-in-out;
+        }
+        @media (max-width: 600px) {
+            .container {
+                padding: 10px;
+            }
+        }
+
+
+.containerr {
+            flex: 1;
+            font-family: "Baskervville SC", serif;
+            width: 100%;
+            margin-top: 30px;
+            border-radius: 8px;
+            border: 2px solid magenta;
+            background-color: rgba(0, 0, 0, 0);
+            box-shadow: 0 0 10px rgba(250, 195, 235, 1.0);
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .ft {
+  padding-top: 20px;
+}
+
+.out {
+        padding: 13px 13px 13px 13px;
+        justify-content: center;
+        align-items: center;
+        margin: 5px;
+    }
+    
+    .pp {
+    text-align: center;
+    justify-content: center;
+    padding: 3px;
+    font-size: 12px;
+    padding-bottom: 10px;
+}
+
+h1 {
+  font-size: 1.2em;
+  padding-top: 15px;
+}
+
+.popup {
+            display: none; /* Sembunyikan popup secara default */
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            border-radius: 10px;
+            transform: translate(-50%, -50%) scale(0); /* Skala 0 untuk efek muncul */
+            width: 200px; /* Ukuran lebih kecil */
+            border: 1px solid magenta;
+            background-color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            padding: 15px; /* Padding lebih kecil */
+            text-align: center;
+            transition: transform 0.3s ease, opacity 0.3s ease; /* Transisi untuk efek */
+            opacity: 0; /* Opacity 0 untuk efek muncul */
+        }
+        .popup img {
+          width: 10px;
+          height: 10px;
+          border-radius: 20px;
+        }
+        
+        
+        .overlay {
+            display: none; /* Sembunyikan overlay secara default */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+        .close-btn {
+            margin-top: 10px; /* Margin lebih kecil */
+            padding: 8px 16px; /* Padding lebih kecil */
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .close-btn:hover {
+            background-color: #0056b3;
+        }
+        .d {
+          text-align: center;
+          justify-items: center;
+          font-size: 10px;
+        }
+
+        .user-counts-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow boxes to wrap to the next line */
+    justify-content: space-around; /* Space out the boxes evenly */
+    margin-top: 20px; /* Add some space above the boxes */
+}
+
+.user-count-box {
+    border: 1px solid magenta; /* Border color */
+    background-color: #2a2a2a; /* Dark background color */
+    box-shadow: 0 0 10px rgba(250, 195, 235, 1.0); /* Shadow effect */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px; /* Padding inside the box */
+    width: 22%; /* Width of each box for desktop */
+    text-align: center; 
+    margin: 3px;
+}
+
+.user-count {
+    font-size: 20px; /* Font size for the count */
+    font-weight: bold; /* Bold text */
+}
+
+.user-count-box h2 {
+    margin-top: 5px;
+    font-size: 16px; /* Font size for the heading */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .user-count-box {
+        width: 45%; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .user-count-box {
+        width: 40%; /* Full width for very small screens */
+    }
+}
+
+
+    @keyframes ring {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(0); }
+    100% { transform: translateX(0); }
+}
+
+        .popup-menu {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position to cover the entire screen */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            justify-content: center; /* Center the content horizontally */
+            align-items: center; /* Center the content vertically */
+            z-index: 1000; /* Ensure it appears above other elements */
+        }
+
+        .popup-content {
+            font-family: "Baskervville SC", serif;
+            background-color: #1a1a1a; /* Background color for the popup */
+            color: #fff; 
+            width: 80%;/* Text color */
+            border-radius: 10px; 
+            border: 2px solid magenta;
+            box-shadow: 0 0 10px rgba(250, 195, 235, 1.0);/* Rounded corners */
+            padding: 20px; /* Padding inside the popup */
+            text-align: center; /* Center text */
+            position: relative; /* For positioning the close button */
+        }
+
+        .popup-content img {
+            padding: 8px;
+            max-width: 90%; /* Responsive image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 5px; /* Rounded corners for the image */
+        }
+        
+        .popup-content p {
+            font-size: 13px;
+        } 
+
+        .close-button {
+            position: absolute; /* Position the close button */
+            top: 10px; /* Distance from the top */
+            right: 10px; /* Distance from the right */
+            background: none; /* No background */
+            border: none; /* No border */
+            color: #fff; /* White color */
+            font-size: 1.5em; /* Size of the close button */
+            cursor: pointer; /* Pointer cursor */
+        }
