@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shannz Rest Api | Endpoint Documentasi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/list.css">
+</head>
+<body>
+<div class="out">
+    <header>
+    <div class="logo">Shannz APIs</div>
+    <div class="header-icons">
+        <div class="notification-icon" id="notificationIcon">🔔</div> <!-- Notification Icon -->
+        <div class="menu-toggle">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</header>
+
+        <nav>
+            <div class="nav-logo">Shannz APIs</div>
+            <ul>
+                <li><a href="/dashboard"><span class="menu-icon">🏠</span>Dashboard</a></li>
+                <li><a href="/docs"><span class="menu-icon">🔥</span>List Endpoint</a></li>
+                <li><a href="/support"><span class="menu-icon">💡</span>Diskusi</a></li>
+                <li><a href="/"><span class="menu-icon">📞</span>Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="popup-menu" id="popupMenu">
+            <div class="popup-contents">
+                <button class="close-button" id="closePopup">✖</button>                
+                <img src="https://api.shannmoderz.xyz/server/file/lLftwUkaNXwx2QhC.jpg" alt="Deskripsi Gambar"> 
+                <h2>September Membara!</h2><!-- Replace with your image URL -->
+                <p>Ayo berlangganan paket VIP atau ALIFETIME dan raih kesempatan mendapatkan panel pterodactyl unlimited, Bisa request nodejs atau python!</p>
+            </div>
+        </div>
+    <div id="pageLoadingOverlay" class="page-loading-overlay">
+  <div class="fire-loading">
+    <div class="fire-logo">
+      <div class="fire">
+        <div class="flames">
+          <div class="flame"></div>
+          <div class="flame"></div>
+          <div class="flame"></div>
+          <div class="flame"></div>
+        </div>
+        <div class="logs"></div>
+      </div>
+    </div>
+    <h4>Memulai Adventure...</h4>
+  </div>
+</div>
+
+    <div id="loadingOverlay" class="loading-overlay">
+  <div class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Memuat...</p>
+  </div>
+</div>
+   
+   <div class="cn" >
+        <h1>LIST ENDPOINT</h1>
+        <div id="apiGroups"></div>
+    </div>
+
+    <div id="paramPopupOverlay" class="popup-overlay">
+    <div id="paramPopupContent" class="popup-content">
+        <h2 class="nnm">Parameter Requirement</h2>
+        <form id="paramForm">
+            <div id="paramInputs"></div>
+            <button type="submit" class="btn-submit">Cek API</button>
+            <button type="button" onclick="closeParamPopup()" class="btn-close">Batal</button>
+        </form>
+        <div id="endpointDescription" class="endpoint-description"></div>
+    </div>
+</div>
+
+    <div id="resultPopupOverlay" class="popup-overlay">
+    <div id="resultPopupContent" class="popup-content">
+        <h2>Respons APIs</h2>
+        <p id="apiStatus"></p>
+        <div id="currentLink" class="current-link"></div>
+        <button onclick="closeResultPopup()" class="btn-close">Tutup</button>
+    </div>
+</div>
+</div>
+<div class="ft">
+<p class="pp">ada masalah error pada api? segera repot ke admin.<p>
+    <footer>
+        <p>&copy; 2024 ShannModerz Multi Development.</p>
+    </footer>
+</div>
+
+    <script src="/js/list.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://telegra.ph/file/a6c805fa9bedb33fdaf8e.jpg" rel="icon">
+    <link href="https://telegra.ph/file/a6c805fa9bedb33fdaf8e.jpg" rel="apple-touch-icon">
+    <title>Shannz Rest Api | Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+<div class="overlay" id="overlay"></div>
+
+<div class="popup" id="popup">
+    <h1>Pembaruan Besar</h1>
+    <img src="https://telegra.ph/file/e80f024e1fe06535f72dd.jpg" alt="Gambar" style="width: 100%; height: auto;">
+    <p class="d">Shannz Rest APIs, resmi menggunakan apikey disetiap endpointnya, kunjungi home untuk melihat informasi selengkapnya tentang price apikey.</p>
+    <button class="close-btn" onclick="closePopup()">Tutup</button>
+    <button class="close-btn" id="href-b">Home</button>
+</div>
+  
+<div class="out">
+    <header>
+    <div class="logo">Shannz APIs</div>
+    <div class="header-icons">
+        <div class="notification-icon" id="notificationIcon">🔔</div> <!-- Notification Icon -->
+        <div class="menu-toggle">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+</header>
+
+        <nav>
+            <div class="nav-logo">Shannz APIs</div>
+            <ul>
+                <li><a href="/dashboard"><span class="menu-icon">🏠</span>Dashboard</a></li>
+                <li><a href="/docs"><span class="menu-icon">🔥</span>List Endpoint</a></li>
+                <li><a href="/support"><span class="menu-icon">💡</span>Diskusi</a></li>
+                <li><a href="/"><span class="menu-icon">📞</span>Contact</a></li>
+            </ul>
+        </nav>
+
+        <div class="popup-menu" id="popupMenu">
+            <div class="popup-content">
+                <button class="close-button" id="closePopup">✖</button>                
+                <img src="https://api.shannmoderz.xyz/server/file/lLftwUkaNXwx2QhC.jpg" alt="Deskripsi Gambar"> 
+                <h2>September Membara!</h2><!-- Replace with your image URL -->
+                <p>Ayo berlangganan paket VIP atau ALIFETIME dan raih kesempatan mendapatkan panel pterodactyl unlimited, Bisa request nodejs atau python!</p>
+            </div>
+        </div>
+
+    <div id="pageLoadingOverlay" class="page-loading-overlay">
+  <div class="fire-loading">
+    <div class="fire-logo">
+      <div class="fire">
+        <div class="flames">
+          <div class="flame"></div>
+          <div class="flame"></div>
+          <div class="flame"></div>
+          <div class="flame"></div>
+        </div>
+        <div class="logs"></div>
+      </div>
+    </div>
+    <h4>Memulai Adventure...</h4>
+  </div>
+</div>
+
+   <div class="containerr">
+        <h1>Server Statistics</h1>
+        <div class="stat-card">
+            <div class="stat-title">Jumlah Requests</div>
+            <div class="stat-value" id="totalRequests">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Runtime</div>
+            <div class="stat-value" id="uptime">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Memory Usage</div>
+            <div class="stat-value" id="memoryUsage">Loading...</div>
+            <div class="memory-bar">
+                <div class="memory-used" id="memoryBar"></div>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">CPU Usage</div>
+            <div class="stat-value" id="cpuUsage">Loading...</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">Baterai User</div>
+            <div class="stat-value" id="batteryStatus">Loading...</div>
+       </div>
+       <h1>Jumlah Users</h1>
+<div class="user-counts-container">
+    <div class="user-count-box">
+        <h2>Free</h2>
+        <div class="user-count" id="freeCount">Loading...</div>
+    </div>
+    <div class="user-count-box">
+        <h2>Premium</h2>
+        <div class="user-count" id="premiumCount">Loading...</div>
+    </div>
+    <div class="user-count-box">
+        <h2>VIP</h2>
+        <div class="user-count" id="vipCount">Loading...</div>
+    </div>
+    <div class="user-count-box">
+        <h2>Alifetime</h2>
+        <div class="user-count" id="AlCount">Loading...</div>
+    </div>
+  </div>
+    </div>
+</div>
+    
+<div class="ft">
+<p class="pp">ada masalah error pada api? segera repot ke admin.<p>
+    <footer>
+        <p>&copy; 2024 ShannModerz Multi Development.</p>
+    </footer>
+</div>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

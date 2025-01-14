@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 10px;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+        button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            margin-top: 10px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>API User Management</h1>
+
+    <!-- Form untuk mengedit status pengguna -->
+    <h2>Edit Status Pengguna</h2>
+    <form id="editStatusForm">
+        <input type="text" id="editUsername" placeholder="Edit Username" required>
+        <select id="editType">
+            <option value="">Pilih Type User</option>
+            <option value="free">Free</option>
+            <option value="premium">Premium</option>
+            <option value="vip">VIP</option>
+            <option value="alifetime">ALIFETIME</option>
+        </select>
+        <input type="number" id="editLimit" placeholder="Edit Request Limit">
+        <input type="text" id="editApikey" placeholder="Edit Nama Apikey">
+        <select id="editStatus">
+            <option value="">Pilih Status User</option>
+            <option value="user">user</option>
+            <option value="admin">admin</option>
+        </select>
+        <button type="submit">Update Status</button>
+        <div class="message" id="editMessage"></div>
+    </form>
+
+    <!-- Form untuk menghapus pengguna -->
+    <h2>Hapus Pengguna</h2>
+    <form id="deleteUserForm">
+        <input type="text" id="deleteUsername" placeholder="Username" required>
+        <button type="submit">Hapus Pengguna</button>
+        <div class="message" id="deleteMessage"></div>
+    </form>
+
+    <script>
+        // Fungsi untuk mengedit status pengguna
+        document.getElementById('editStatusForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('editUsername').value;
+            const type = document.getElementById('editType').value;
+            const limit = document.getElementById('editLimit').value;
+            const key = document.getElementById('editApikey').value;
+            const status = document.getElementById('editStatus').value;
+
+            try {
+                const response = await fetch('/auth/update-status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username,
+                        type,
+                        limit: parseInt(limit),
+                        apikey: key,
+                        status,
+                    }),
+                });
+
+                const data = await response.json();
+                document.getElementById('editMessage').innerText = data.message || 'Terjadi kesalahan';
+            } catch (error) {
+                document.getElementById('editMessage').innerText = 'Kesalahan jaringan: ' + error.message;
+            }
+        });
+
+        // Fungsi untuk menghapus pengguna
+        document.getElementById('deleteUserForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('deleteUsername').value;
+
+            try {
+                const response = await fetch(`/auth/delete-user/${username}`, {
+                    method: 'DELETE',
+                });
+
+                const data = await response.json();
+                document.getElementById('deleteMessage').innerText = data.message || 'Terjadi kesalahan';
+            } catch (error) {
+                document.getElementById('deleteMessage').innerText = 'Kesalahan jaringan: ' + error.message;
+            }
+        });
+    </script>
+
+</body>
+</html>

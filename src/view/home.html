@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://telegra.ph/file/a6c805fa9bedb33fdaf8e.jpg" rel="icon">
+    <link href="https://telegra.ph/file/a6c805fa9bedb33fdaf8e.jpg" rel="apple-touch-icon">
+    <title>Shannz Rest APIs | Lebih Cepat & Lengkap</title>
+    <style>
+        :root {
+            --primary-color: #4a148c;
+            --secondary-color: #1a237e;
+            --text-color: #e0e0e0;
+            --bg-color: #121212;
+            --feature-bg: #1e1e1e;
+            --feature-border: #00ff00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: black;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+        }
+
+        .hero {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            text-align: center;
+            padding: 4rem 0;
+        }
+      
+        .hero h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #fff;
+            color: var(--primary-color);
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            background: var(--bg-color);
+            color: #fff;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(255,255,255,0.2);
+        }
+        
+        .pricing img {
+            width: 60px; /* Ukuran logo */
+            height: 60px; /* Ukuran logo */
+            margin-bottom: 1rem; /* Jarak antara logo dan teks */
+            transition: transform 0.3s ease; /* Efek transisi saat hover */
+            border-radius: 10px;
+        }
+
+        .pricing:hover img {
+            transform: scale(1.1); /* Efek zoom pada logo saat hover */
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.5);
+        }
+
+        .pricing h3 {
+            color: var(--feature-border);
+            margin-bottom: 0.5rem; /* Jarak antara judul dan deskripsi */
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+        }
+
+        .pricing p {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: var(--text-color);
+        }
+
+        .pricing {
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .pricing h2 {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-plan {
+            display: inline-block;
+            background: var(--feature-bg);
+            border: 2px solid var(--feature-border);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            width: 300px; /* Menjaga ukuran kotak tetap konsisten */
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            transition: all 0.3s ease;
+            text-align: center; /* Memastikan teks di tengah */
+        }
+
+        .pricing-plan:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.5);
+        }
+
+        .benefits {
+            margin-top: 1rem;
+            list-style-type: disc;
+            padding-left: 20px;
+            text-align: left; /* Memastikan teks daftar di kiri */
+        }
+
+        li {
+            list-style-type: none;
+        }
+
+        footer {
+            background: black;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: auto;
+        }
+
+        .wm {
+            font-size: 16px;
+        }
+        
+        .sponsor-logos {
+    overflow: hidden;
+    background-color: white;
+    padding: 1rem 0;
+    position: relative; /* Ensure the container is positioned relative */
+}
+
+.sponsor-logos h5 {
+  text-align: center;
+  padding: 5px;
+  margin: 10px;
+  color: black;
+}
+
+.sponsor-container {
+    display: flex;
+    width: 100%;
+}
+
+.sponsor-container img {
+    height: 60px; /* Adjust the height as needed */
+    margin: 0 20px; /* Space between logos */
+}
+
+.contributor {
+    background-color: var(--feature-bg);
+    padding: 2rem;
+    text-align: center;
+}
+
+.contributor-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contributor-profile {
+    background: var(--bg-color);
+    border: 2px solid var(--feature-border);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1rem;
+    width: 300px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.contributor-profile p {
+  font-size: 15px;
+  padding: 10px;
+}
+
+.contributor-profile:hover {
+    transform: translateY(-5px);
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+
+.social-media {
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-media li {
+    display: inline;
+    margin: 0 10px;
+}
+
+.social-media li a {
+  text-decoration: none;
+  color: var(--feature-border);
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Shannz Rest APIs</h1>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Revolusi Pengembangan Aplikasi dengan Shannz Rest APIs</h2>
+                <p>Solusi REST API Yang Cepat, Aman, Dan Skalabel Untuk Segala Proyek Anda</p>
+                <a href="/dashboard" class="btn">Go To Dashboard</a>
+            </div>
+        </section>
+        
+        <section class="sponsor-logos">
+        <h5>Supported By</h5>
+    <div class="sponsor-container" id="sponsor">
+        <img src="data:image/png;base64,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" alt=\"Sponsor 1\">
+        <img src="https://telegra.ph/file/3ec3179254cd585ab2bd1.jpg" alt="Sponsor 2">
+        <img src="https://telegra.ph/file/c214433a756c60ed990b7.jpg" alt="Sponsor 3">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJGElCyqI1OAhlvQOSfz9-OHsb-hNuPjLUJEfuvaicNQ&s" alt="Sponsor 4">
+        <img src="https://telegra.ph/file/0b8738729b9b8a12b7e5e.jpg" alt="Sponsor 4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzjp-m7UKXsPiZfcdad56foM90hdq3pymndRJUTENBKw&s" alt="Sponsor 5">
+        <img src="https://telegra.ph/file/1334c250ad876bc2a3296.jpg" alt="Sponsor 6">
+    </div>
+</section>
+
+        <section class="pricing">
+            <h2>Keunggulan</h2> <!-- Menambahkan judul Keunggulan -->
+            <div class="pricing-plan">
+                <img src="data:image/png;base64,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" alt="Logo Performa Tinggi"> <!-- Ganti dengan URL logo yang sesuai -->
+                <h3>Performa Tinggi</h3>
+                <p>Shannz rest api dioptimalkan untuk kecepatan, memberikan respons dalam milidetik.</p>
+            </div>
+            <div class="pricing-plan">
+                <img src="data:image/png;base64,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" alt="Logo Keamanan"> <!-- Ganti dengan URL logo yang sesuai -->
+                <h3>Keamanan Terjamin</h3>
+                <p>Enkripsi end-to-end dan memilih firebase sebagai platform database yang aman.</p>
+            </div>
+            <div class="pricing-plan">
+                <img src="data:image/png;base64,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" alt="Logo Skalabilitas"> <!-- Ganti dengan URL logo yang sesuai -->
+                <h3>Skalabilitas</h3>
+                <p>Mendukung jutaan permintaan tanpa mengorbankan kinerja dan pengurangan kinerja.</p>
+            </div>
+        </section>
+
+        <section class="pricing">
+            <h2>Berlangganan</h2>
+            <div class="pricing-plan">
+                <h3>Free Plan</h3>
+                <p>Gratis untuk penggunaan dasar dan project kecil.</p>
+                <ul class="benefits">
+                    <li>✅ 500 limit request</li>
+                    <li>❌ costume apikey</li>
+                    <li>❌ akses semua fitur</li>
+                    <li>❌ free code case bot</li>
+                </ul>
+                <a href="https://wa.me/6282142770930" class="btn">0.00 IDR</a>
+            </div>
+            <div class="pricing-plan">
+                <h3>Premium</h3>
+                <p>Limit melimpah dengan harga terjangkau.</p>
+                <ul class="benefits">
+                    <li>✅ 3000 limit request</li>
+                    <li>✅ 3x costume apikey</li>
+                    <li>❌ akses semua fitur </li>
+                    <li>❌ free code case bot</li>
+                </ul>
+                <a href="https://wa.me/6282142770930" class="btn">5.000 IDR</a>
+            </div>
+            <div class="pricing-plan">
+                <h3>VIP</h3>
+                <p>Paket kuat untuk kebutuhan bisnis mu.</p>
+                <ul class="benefits">
+                    <li>✅ 7000 limit request</li>
+                    <li>✅ 5x costume apikey</li>
+                    <li>✅ akses semua fitur</li>
+                    <li>✅ free code case bot</li>
+                </ul>
+                <a href="https://wa.me/6282142770930" class="btn">10.000 IDR</a>
+            </div>
+            <div class="pricing-plan">
+                <h3>Alifetime</h3>
+                <p>Paket kuat untuk kebutuhan bisnis mu.</p>
+                <ul class="benefits">
+                    <li>✅ unlimited limit request</li>
+                    <li>✅ unlimited costume apikey</li>
+                    <li>✅ akses semua fitur</li>
+                    <li>✅ free code case bot</li>
+                </ul>
+                <a href="https://wa.me/6282142770930" class="btn">30.000 IDR</a>
+            </div>
+        </section>
+        
+        <section class="hero">
+          <h2>Pertanyaan Seputar</h2>
+          <h4>A. Mengapa harus shannz rest api?</h4>
+          <ul class="benefits">
+            <li>1. Kecepatan Merespon<p>Mendukung jutaan permintaan namun tidak mengurangi kinerja respon dari setiap permintaan yang diminta.</p></li>
+            <li>2. Dukungan Playwright<p>Menggunakan module playwright sebagai jembatan beberapa endpoint khusus dalam mengambil data untuk dikirimkan ke user.</p></li>
+            <li>3. Keamanan Data<p>Menggunakan database resmi dari google, firebase sebagai gudang penyimpanan data user.</p></li>
+          </ul>
+          <h4>B. Apa keunggulan shannz rest api?</h4>
+          <ul class="benefits">
+            <li>1. Fitur unggulan<p>Fitur unggulan dapat diakses oleh user premium dan vip saja, karena kualitas data yang diberikan tidak hanya lengkap namun juga berkualitas.</p></li>
+            <li>2. Tampilan interaktif<p>Setiap endpoint dapat diakses tanpa harus keluar dari halaman bahkan dapat di costume parameternya.</p></li>
+            <li>3. Banyak Platform<p>Banyak fitur yang mendukung platform-platform besar seperti tiktok, youtube, facebook, dan lainnya.</p></li>
+          </ul>
+        </section>
+        
+        <section class="contributor">
+    <h2>Contributor</h2>
+    <div class="contributor-container">
+        <div class="contributor-profile">
+            <img src="https://telegra.ph/file/8a24af755f30ea751055f.jpg" alt="Contributor 1" class="profile-pic">
+            <h3>DitzOffc</h3>
+            <p>Seorang developer bot WhatsApp, Berperan sebagai penyumbang bahan-bahan website untuk di scraping.</p>
+            <ul class="social-media">
+                <li><a href="https://whatsapp.com/channel/0029VaYyCtsHltYBaNA0DQ36" target="_blank">Saluran</a></li>
+                <li><a href="https://github.com/DitzOfc-Expertise" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <div class="contributor-profile">
+            <img src="https://telegra.ph/file/562872f332345f6a4864f.jpg" alt="Contributor 2" class="profile-pic">
+            <h3>Rixz</h3>
+            <p>Seorang pemain banned-unbanned WhatsApp, Berperan sebagai penyedia fasilitas & menginformasikan hal baru.</p>
+            <ul class="social-media">
+                <li><a href="https://twitter.com/janesmith" target="_blank">Instagram</a></li>
+                <li><a href="https://github.com/Isjsidiwi" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <div class="contributor-profile">
+            <img src="https://telegra.ph/file/4344b740e45575ef8cb63.jpg" alt="Contributor 2" class="profile-pic">
+            <h3>Kaviaann</h3>
+            <p>Seorang developer backend, Berperan sebagai membuat dan menyumbangkan scrape non playwright.</p>
+            <ul class="social-media">
+                <li><a href="https://whatsapp.com/channel/0029Vac0YNgAjPXNKPXCvE2e" target="_blank">Saluran</a></li>
+                <li><a href="https://github.com/Kaviaann" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <div class="contributor-profile">
+            <img src="https://avatars.githubusercontent.com/ztrdiamond" alt="Contributor 2" class="profile-pic">
+            <h3>Ztrdiamond</h3>
+            <p>Seorang scraper pengangguran, Berperan sebagai penyumbang scrape non authenticated.</p>
+            <ul class="social-media">
+                <li><a href="https://whatsapp.com/channel/0029VagFeoY9cDDa9ulpwM0T" target="_blank">Saluran</a></li>
+                <li><a href="https://github.com/ztrdiamond" target="_blank">Github</a></li>
+            </ul>
+        </div>
+        <!-- Add more contributor profiles as needed -->
+    </div>
+</section>
+
+    <footer>
+        <div class="container">
+            <p class="wm">&copy; 2024 ShannModerz Multi Development</p>
+        </div>
+    </footer>
+    <script>
+        const logosContainer = document.getElementById('sponsor');
+        const logos = logosContainer.innerHTML; // Simpan isi logo
+        logosContainer.innerHTML += logos; // Duplikat logo untuk efek seamless
+
+        let scrollSpeed = 1; // Kecepatan scroll
+        let position = 0; // Posisi awal
+
+        function scrollLogos() {
+            position -= scrollSpeed; // Kurangi posisi untuk scroll ke kiri
+            if (Math.abs(position) >= logosContainer.scrollWidth / 2) {
+                position = 0; // Reset posisi jika sudah melewati setengah lebar
+            }
+            logosContainer.style.transform = `translateX(${position}px)`; // Terapkan transformasi
+            requestAnimationFrame(scrollLogos); // Panggil fungsi ini lagi untuk animasi
+        }
+
+        scrollLogos(); // Mulai scrolling
+    </script>
+</body>
+</html>

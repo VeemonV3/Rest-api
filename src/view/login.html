@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212; /* Dark background */
+            color: #ffffff; /* Light text color */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center; /* Center the container */
+            align-items: center; /* Center vertically */
+            height: 100vh; /* Full height */
+        }
+        .container {
+            background-color: #1e1e1e; /* Dark container background */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow effect */
+            width: 100%;
+            max-width: 400px; /* Max width for larger screens */
+        }
+        h1 {
+            color: #ffffff;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 10px;
+            width: calc(100% - 20px); /* Full width minus padding */
+            border: 1px solid #444; /* Darker border */
+            border-radius: 5px;
+            background-color: #1e1e1e; /* Dark input background */
+            color: #ffffff; /* Light text color */
+        }
+        input::placeholder {
+            color: #bbb; /* Placeholder color */
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #28a745; /* Green button */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width */
+            margin: 10px auto;
+            display: block;
+        }
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        .register-message {
+            text-align: center;
+            margin-top: 15px;
+            color: #bbb; /* Lighter text for the message */
+        }
+        .register-message a {
+            color: #28a745; /* Green link color */
+            text-decoration: none; /* Remove underline */
+        }
+        .register-message a:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+        /* Modal Styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0, 0, 0, 0.8); /* Darker modal background */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #2c2c2c; /* Dark modal background */
+            margin: 5% auto; 
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; 
+            max-width: 500px;
+            border-radius: 5px;
+        }
+        .close {
+            color: #bbb;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: white; /* Close button color */
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        async function login() {
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Validate inputs
+            if (!username || !password) {
+                showModal('Login gagal', { message: 'Semua input harus diisi.' });
+                return; // Stop the function if validation fails
+            }
+
+            // Check for spaces in the input values
+            if (/\s/.test(username) || /\s/.test(password)) {
+                showModal('Login gagal', { message: 'Input tidak boleh mengandung spasi.' });
+                return; // Stop the function if spaces are found
+            }
+
+            const response = await fetch('/auth/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+    if (response.ok) {
+        // Show all user details in the modal
+        showModal('Registrasi berhasil!', data[0]);
+    } else {
+        // Show error message in the modal
+        showModal('Registrasi gagal', { message: 'Terjadi Kesalahan saat membuat akun' });
+    }
+}
+
+function showModal(title, userData) {
+    const modal = document.getElementById("myModal");
+    document.getElementById("modal-title").innerText = title;
+
+    // Check if userData contains a message for errors
+    let message = '';
+    if (userData.message) {
+        message = `<strong>Error:</strong> ${userData.message}<br>`;
+    } else {
+        // Format user data for display
+        message = `
+            <strong>Username:</strong> ${userData.username}<br>
+            <strong>Status:</strong> ${userData.status}<br>
+            <strong>API Key:</strong> ${userData.apiKey}<br>
+            <strong>Request Limit:</strong> ${userData.requestLimit}<br>
+            <strong>Account Type:</strong> ${userData.accountType}<br>
+        `;
+    }
+    
+    document.getElementById("modal-message").innerHTML = message;
+
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    const modalMessage = document.getElementById("modal-message").innerHTML;
+
+    // Check if the modal message contains user data
+    if (modalMessage.includes("Username:")) {
+        // Redirect to the dashboard if user data is present
+        window.location.href = '/dashboard';
+    } else {
+        // Just hide the modal if it's an error message
+        modal.style.display = "none"; // Hide the modal
+    }
+}
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <input type="text" id="login-username" placeholder="Username" required>
+        <input type="password" id="login-password" placeholder="Password" required>
+        <button onclick="login()">Masuk</button>
+        <div class="register-message">
+            <p>Belum punya akun? <a href="/">Pergi ke home</a></p>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-message"></p>
+        </div>
+    </div>
+</body>
+</html>
